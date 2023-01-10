@@ -1,0 +1,37 @@
+<h2 class="my-3">{{ pokemon?.name | pokemonName }}</h2>
+
+<div class="form-check form-switch">
+    <label for="inputFavorit" class="form-check-label">Favorite</label>
+    <input *ngIf="pokemon" type="checkbox" class="form-check-input" name="inputFavorit" id="inputFavorit" [(ngModel)]="pokemonService.pokemons[pokemon.id - 1].isFavorite">
+</div>
+
+<ul>
+    <li>Name: {{ pokemon?.name | pokemonName }}</li>
+    <li>Height: {{ pokemon?.height }}</li>
+    <li>Weight: {{ pokemon?.weight }}</li>
+    <li>Abilities:</li>
+    <ul>
+        <li *ngFor="let ability of pokemon?.abilities">{{ ability.ability.name }}</li>
+    </ul>
+</ul>
+
+<h3 class="my-3">Pictures</h3>
+
+<div class="row">
+    <div class="col-2">
+        <div class="card">
+            <img src="{{ pokemon?.sprites?.front_default }}" class="card-img-top" alt="Front of Pokemon {{pokemon?.name}}">
+            <div class="card-body">
+            <h5 class="card-title text-center">Front</h5>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="card">
+            <img src="{{ pokemon?.sprites?.back_default }}" class="card-img-top" alt="Back of Pokemon {{pokemon?.name}}">
+            <div class="card-body">
+            <h5 class="card-title text-center">Back</h5>
+            </div>
+        </div>
+    </div>
+</div>
